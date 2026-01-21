@@ -1,0 +1,10 @@
+font.family: sans-serif
+font.sans-serif: TeX Gyre Pagella
+mathtext.fontset: "custom"
+mathtext.rm: "Times New Roman"  
+mathtext.it: "Times New Roman:italic"
+mathtext.bf: "Times New Roman:bold"
+
+figure.figsize: 3, 3
+
+figure.constrained_layout.use: True
