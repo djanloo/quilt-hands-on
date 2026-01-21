@@ -1,33 +1,32 @@
-# Parameters (spiking_data, brain_data)
-These folders contains data and configuration files for the simulation. 
-The file position and name are not mandatory, as they are specified in the python script.
+# Parameters (`spiking_data`, `brain_data`)
 
-## Neural mass & sensor data (brain data)
+These folders contain data and configuration files used by the simulation.  
+File names and locations are not fixed, since they are specified directly in the Python scripts.
 
-Here is contained an heterogeneous mixture of stuff:
+## Neural mass & sensor data (`brain_data`)
 
-- **Connectivity**: the connectivity between neural masses (weights, delays)
-- **Sensors**: data about the EEG (channels, channel position, etc.)
-- **Lead Field Matrices**: neural mass activity to EEG
-- **Surfaces**: the ~16k vertices surface of the cortex from TVB
-- **Mappings**: geodesic-distance-fro-centroid mapping of the surface vertices
+This folder contains a heterogeneous mix of different data types:
 
-NOTE: not all these data are necessary for a proper simulation. During the thesis I collapsed Surface data, Lead field data and region mapping to a single "Node Lead Field Matrix", that gives the EEG starting from the dynamics of the neural mass network (`nlfm_pahological.pkl`).
+- **Connectivity**: connectivity between neural masses (weights, delays)
+- **Sensors**: EEG-related information (channels, channel positions, etc.)
+- **Lead Field Matrices**: mapping from neural mass activity to EEG signals
+- **Surfaces**: cortical surface (~16k vertices) from TVB
+- **Mappings**: geodesic-distance-from-centroid mapping of surface vertices
 
+**NOTE:** Not all of these data are required for a valid simulation.  
+During my thesis work, surface data, lead field data, and region mappings were collapsed into a single *Node Lead Field Matrix*, which produces EEG signals directly from the neural mass network dynamics (`nlfm_pathological.pkl`).
 
-## Spiking network config files (spiking_data/spiking_config)
+## Spiking network configuration files (`spiking_data/spiking_config`)
 
-These are [YAML](https://it.wikipedia.org/wiki/YAML) files for the parameters (description is inside)
+These are [YAML](https://it.wikipedia.org/wiki/YAML) files containing parameter definitions (each file includes its own description):
 
-- **neurons.yaml**: defines neuron properties (membrane capacity, recovery variables etc.)
-- **network.yaml**: defines network properties (weights in nS of the synapses, connectivity, etc.)
-- **parametric.yaml**: defines the parametric dependencies (i.e. dopamine modulation)
+- **neurons.yaml**: defines neuron properties (membrane capacitance, recovery variables, etc.)
+- **network.yaml**: defines network properties (synaptic weights in nS, connectivity, etc.)
+- **parametric.yaml**: defines parametric dependencies (e.g. dopamine modulation)
 
+## Supersynapse configuration files (`spiking_data/supsyn_config`)
 
-## Supersynapses config files (spiking_data/supsyn_config)
+These are also [YAML](https://it.wikipedia.org/wiki/YAML) files used to configure supersynapses (a term introduced by L.G.A. to indicate an inhomogeneous Poisson process driven by the collective firing rate of a group of neural masses).
 
-Again [YAML](https://it.wikipedia.org/wiki/YAML) files for configuring the supersynapses (fancy name given by L.G.A. for a Inhomogeneous Poisson Process linked to the collective rate of a group of neural masses).
-
-- **supersynapses.yaml**: declares the supersynapses and their properties (synaptic strength and other technical stuff)
-- **suspsyn_connectivity.yaml**: defines the connectivity of each supersynapse with the neural masses
-
+- **supersynapses.yaml**: defines supersynapses and their properties (synaptic strength and other technical parameters)
+- **supsyn_connectivity.yaml**: defines the connectivity between supersynapses and neural masses
