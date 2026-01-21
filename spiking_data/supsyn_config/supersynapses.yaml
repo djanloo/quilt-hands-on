@@ -1,0 +1,35 @@
+transducers:
+  - name: D1_td
+    population: D1
+    initialization_rate: 1120
+    weight: 0.51
+    weight_delta: 0.0
+    generation_window: 5
+
+  - name: D2_td
+    population: D2
+    initialization_rate: 850
+    weight: 0.448
+    weight_delta: 0.0
+    generation_window: 5
+
+  - name : STN_td
+    population: STN
+    initialization_rate: 0
+    weight: 0.25
+    weight_delta: 0.0
+    generation_window: 5
+
+  - name: SNR_td
+    population: SNR
+    initialization_rate: 0
+    weight: 0.1
+    weight_delta: 0.0
+    generation_window: 5
+
+  - name: GPi_td
+    population: GPi
+    initialization_rate: 0
+    weight: 0.1
+    weight_delta: 0.0
+    generation_window: 5

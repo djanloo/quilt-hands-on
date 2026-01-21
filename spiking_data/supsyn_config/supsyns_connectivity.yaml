@@ -1,0 +1,416 @@
+################ STRIATUM ################
+
+D1_td:
+  incoming:
+    r_superiorfrontal: 
+      weight: 13.13
+      delay: 25
+    l_superiorfrontal: 
+      weight: 13.13
+      delay: 25
+    r_precentral: 
+      weight: 9.81
+      delay: 25
+    l_precentral: 
+      weight: 9.81
+      delay: 25
+    r_insula: 
+      weight: 9.30
+      delay: 25
+    l_insula: 
+      weight: 9.30
+      delay: 25
+    r_rostralmiddlefrontal: 
+      weight: 7.95
+      delay: 25
+    l_rostralmiddlefrontal: 
+      weight: 7.95
+      delay: 25
+    r_superiorparietal: 
+      weight: 6.59
+      delay: 25
+    l_superiorparietal: 
+      weight: 6.59
+      delay: 25
+    r_postcentral: 
+      weight: 4.96
+      delay: 25
+    l_postcentral: 
+      weight: 4.96
+      delay: 25
+    r_lateralorbitofrontal: 
+      weight: 4.45
+      delay: 25
+    l_lateralorbitofrontal: 
+      weight: 4.45
+      delay: 25
+    r_paracentral: 
+      weight: 5.75
+      delay: 25
+    l_paracentral: 
+      weight: 5.75
+      delay: 25
+    r_inferiorparietal: 
+      weight: 3.36
+      delay: 25
+    l_inferiorparietal: 
+      weight: 3.36
+      delay: 25
+    r_precuneus: 
+      weight: 3.13
+      delay: 25
+    l_precuneus: 
+      weight: 3.13
+      delay: 25
+    r_parstriangularis: 
+      weight: 2.27
+      delay: 25
+    l_parstriangularis: 
+      weight: 2.27
+      delay: 25
+    r_supramarginal: 
+      weight: 2.27
+      delay: 25
+    l_supramarginal: 
+      weight: 2.27
+      delay: 25
+    r_superiortemporal: 
+      weight: 1.96
+      delay: 25
+    l_superiortemporal: 
+      weight: 1.96
+      delay: 25
+    r_inferiortemporal: 
+      weight: 1.94
+      delay: 25
+    l_inferiortemporal: 
+      weight: 1.94
+      delay: 25
+    r_parsorbitalis: 
+      weight: 1.81
+      delay: 25
+    l_parsorbitalis: 
+      weight: 1.81
+      delay: 25
+    r_middletemporal: 
+      weight: 1.72
+      delay: 25
+    l_middletemporal: 
+      weight: 1.72
+      delay: 25
+    r_frontalpole: 
+      weight: 1.18
+      delay: 25
+    l_frontalpole: 
+      weight: 1.18
+      delay: 25
+    r_medialorbitofrontal: 
+      weight: 1.16
+      delay: 25
+    l_medialorbitofrontal: 
+      weight: 1.16
+      delay: 25
+    r_lateraloccipital: 
+      weight: 1.15
+      delay: 25
+    l_lateraloccipital: 
+      weight: 1.15
+      delay: 25
+
+D2_td:
+  incoming:
+    r_superiorfrontal: 
+      weight: 13.13
+      delay: 25
+    l_superiorfrontal: 
+      weight: 13.13
+      delay: 25
+    r_precentral: 
+      weight: 9.81
+      delay: 25
+    l_precentral: 
+      weight: 9.81
+      delay: 25
+    r_insula: 
+      weight: 9.30
+      delay: 25
+    l_insula: 
+      weight: 9.30
+      delay: 25
+    r_rostralmiddlefrontal: 
+      weight: 7.95
+      delay: 25
+    l_rostralmiddlefrontal: 
+      weight: 7.95
+      delay: 25
+    r_superiorparietal: 
+      weight: 6.59
+      delay: 25
+    l_superiorparietal: 
+      weight: 6.59
+      delay: 25
+    r_postcentral: 
+      weight: 4.96
+      delay: 25
+    l_postcentral: 
+      weight: 4.96
+      delay: 25
+    r_lateralorbitofrontal: 
+      weight: 4.45
+      delay: 25
+    l_lateralorbitofrontal: 
+      weight: 4.45
+      delay: 25
+    r_paracentral: 
+      weight: 5.75
+      delay: 25
+    l_paracentral: 
+      weight: 5.75
+      delay: 25
+    r_inferiorparietal: 
+      weight: 3.36
+      delay: 25
+    l_inferiorparietal: 
+      weight: 3.36
+      delay: 25
+    r_precuneus: 
+      weight: 3.13
+      delay: 25
+    l_precuneus: 
+      weight: 3.13
+      delay: 25
+    r_parstriangularis: 
+      weight: 2.27
+      delay: 25
+    l_parstriangularis: 
+      weight: 2.27
+      delay: 25
+    r_supramarginal: 
+      weight: 2.27
+      delay: 25
+    l_supramarginal: 
+      weight: 2.27
+      delay: 25
+    r_superiortemporal: 
+      weight: 1.96
+      delay: 25
+    l_superiortemporal: 
+      weight: 1.96
+      delay: 25
+    r_inferiortemporal: 
+      weight: 1.94
+      delay: 25
+    l_inferiortemporal: 
+      weight: 1.94
+      delay: 25
+    r_parsorbitalis: 
+      weight: 1.81
+      delay: 25
+    l_parsorbitalis: 
+      weight: 1.81
+      delay: 25
+    r_middletemporal: 
+      weight: 1.72
+      delay: 25
+    l_middletemporal: 
+      weight: 1.72
+      delay: 25
+    r_frontalpole: 
+      weight: 1.18
+      delay: 25
+    l_frontalpole: 
+      weight: 1.18
+      delay: 25
+    r_medialorbitofrontal: 
+      weight: 1.16
+      delay: 25
+    l_medialorbitofrontal: 
+      weight: 1.16
+      delay: 25
+    r_lateraloccipital: 
+      weight: 1.15
+      delay: 25
+    l_lateraloccipital: 
+      weight: 1.15
+      delay: 25
+################## STN ################
+STN_td:
+  incoming:
+    r_precentral:
+      weight: 6.41
+      delay: 25
+    l_precentral:
+      weight: 6.41
+      delay: 25
+    r_postcentral:
+      weight: 4.02
+      delay: 25
+    l_postcentral:
+      weight: 4.02
+      delay: 25
+    r_superiorfrontal:
+      weight: 3.75
+      delay: 25
+    l_superiorfrontal:
+      weight: 3.75
+      delay: 25
+    r_superiorparietal:
+      weight: 3.57
+      delay: 25
+    l_superiorparietal:
+      weight: 3.57
+      delay: 25
+    r_paracentral:
+      weight: 2.57
+      delay: 25
+    l_paracentral:
+      weight: 2.57
+      delay: 25
+    r_supramarginal:
+      weight: 1.25
+      delay: 25
+    l_supramarginal:
+      weight: 1.25
+      delay: 25
+
+################## GPi ################
+
+GPi_td:
+  outgoing:
+    r_precentral: 
+      weight: 12.65
+      delay: 25
+    l_precentral: 
+      weight: 12.65
+      delay: 25
+    r_superiorfrontal: 
+      weight: 8.56
+      delay: 25
+    l_superiorfrontal: 
+      weight: 8.56
+      delay: 25
+    r_postcentral: 
+      weight: 4.91
+      delay: 25
+    l_postcentral: 
+      weight: 4.91
+      delay: 25
+    r_paracentral: 
+      weight: 4.78
+      delay: 25
+    l_paracentral: 
+      weight: 4.78
+      delay: 25
+    r_superiorparietal: 
+      weight: 4.69
+      delay: 25
+    l_superiorparietal: 
+      weight: 4.69
+      delay: 25
+    r_precuneus: 
+      weight: 2.14
+      delay: 25
+    l_precuneus: 
+      weight: 2.14
+      delay: 25
+    r_rostralmiddlefrontal: 
+      weight: 2.05
+      delay: 25
+    l_rostralmiddlefrontal: 
+      weight: 2.05
+      delay: 25
+    r_inferiorparietal: 
+      weight: 1.50
+      delay: 25
+    l_inferiorparietal: 
+      weight: 1.50
+      delay: 25
+    r_supramarginal: 
+      weight: 0.91
+      delay: 25
+    l_supramarginal: 
+      weight: 0.91
+      delay: 25
+    r_caudalmiddlefrontal: 
+      weight: 0.84
+      delay: 25
+    l_caudalmiddlefrontal: 
+      weight: 0.84
+      delay: 25
+    r_parstriangularis: 
+      weight: 0.83
+      delay: 25
+    l_parstriangularis: 
+      weight: 0.83
+      delay: 25
+    r_lateraloccipital: 
+      weight: 0.53
+      delay: 25
+    l_lateraloccipital: 
+      weight: 0.53
+      delay: 25
+
+# ############### SNR ###############
+
+SNR_td:
+  outgoing:
+    r_precentral: 
+      weight: 7.23
+      delay: 25
+    l_precentral: 
+      weight: 7.23
+      delay: 25
+    r_superiorparietal: 
+      weight: 6.51
+      delay: 25
+    l_superiorparietal: 
+      weight: 6.51
+      delay: 25
+    r_postcentral: 
+      weight: 4.62
+      delay: 25
+    l_postcentral: 
+      weight: 4.62
+      delay: 25
+    r_inferiorparietal: 
+      weight: 3.71
+      delay: 25
+    l_inferiorparietal: 
+      weight: 3.71
+      delay: 25
+    r_paracentral: 
+      weight: 3.35
+      delay: 25
+    l_paracentral: 
+      weight: 3.35
+      delay: 25
+    r_precuneus: 
+      weight: 3.23
+      delay: 25
+    l_precuneus: 
+      weight: 3.23
+      delay: 25
+    r_superiorfrontal: 
+      weight: 1.97
+      delay: 25
+    l_superiorfrontal: 
+      weight: 1.97
+      delay: 25
+    r_supramarginal: 
+      weight: 1.79
+      delay: 25
+    l_supramarginal: 
+      weight: 1.79
+      delay: 25
+    r_lateraloccipital: 
+      weight: 1.25
+      delay: 25
+    l_lateraloccipital: 
+      weight: 1.25
+      delay: 25
+    r_insula: 
+      weight: 0.65
+      delay: 25
+    l_insula: 
+      weight: 0.65
+      delay: 25

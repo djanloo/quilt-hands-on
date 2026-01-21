@@ -1,0 +1,205 @@
+# This file specifies the properties of the spiking network (numerosity, connectivity, etc.)
+# It is composed of three sections:
+#     - populations
+#     - projections
+#     - devices
+
+# Specs of each population
+populations:
+  D1:
+    neuron_model: D1_neuron # Neuron model name must match the one in the given neuron catalogue
+    size: 6000
+  D2:
+    neuron_model: D2_neuron
+    size: 6000
+  FSN:
+    neuron_model: FSN_neuron
+    size: 420
+  GPeTA:
+    neuron_model: GPeTA_neuron
+    size: 260
+  GPeTI:
+    neuron_model: GPeTI_neuron
+    size: 780
+  GPi:
+    neuron_model: GPi_neuron
+    size: 754
+  SNR:
+    neuron_model: SNR_neuron
+    size: 754
+  STN:
+    neuron_model: STN_neuron
+    size: 408
+
+projections:
+  D1->D1:
+    delay: 1.7            # this is in [ms]
+    fan_in: 364           # = the avg number of synapses coming from the source pop that ONE target neuron has
+    type: inh             # inh / exc
+    weight: 0.12          # weight of the connection in [nS] 
+    # weight_delta: 0.01  # optional: relative width of the log-normal distribution for weights [%]
+    # delay_delta:  0.01  # optional: relative width of the log-normal distribution for delays [%]
+  D1->D2:
+    delay: 1.7
+    fan_in: 84
+    type: inh
+    weight: 0.3
+  D1->GPi:
+    delay: 4.5
+    fan_in: 10
+    type: inh
+    weight: 2.0
+  D1->SNR:
+    delay: 7.0
+    fan_in: 79
+    type: inh
+    weight: 2.0
+  D2->D1:
+    delay: 1.7
+    fan_in: 392
+    type: inh
+    weight: 0.36
+  D2->D2:
+    delay: 1.7
+    fan_in: 504
+    type: inh
+    weight: 0.2
+  D2->GPeTI:
+    delay: 7.0
+    fan_in: 500
+    type: inh
+    weight: 1.28
+  FSN->D1:
+    delay: 1.7
+    fan_in: 16
+    type: inh
+    weight: 6.6
+  FSN->D2:
+    delay: 1.7
+    fan_in: 11
+    type: inh
+    weight: 4.8
+  FSN->FSN:
+    delay: 1.0
+    fan_in: 10
+    type: inh
+    weight: 0.5
+  GPeTA->D1:
+    delay: 7.0
+    fan_in: 10
+    type: inh
+    weight: 0.35
+  GPeTA->D2:
+    delay: 7.0
+    fan_in: 10
+    type: inh
+    weight: 0.61
+  GPeTA->FSN:
+    delay: 7.0
+    fan_in: 10
+    type: inh
+    weight: 1.85
+  GPeTA->GPeTA:
+    delay: 1.0
+    fan_in: 5
+    type: inh
+    weight: 0.35
+  GPeTA->GPeTI:
+    delay: 1.0
+    fan_in: 5
+    type: inh
+    weight: 1.2
+  GPeTI->FSN:
+    delay: 7.0
+    fan_in: 10
+    type: inh
+    weight: 1.6
+  GPeTI->GPeTA:
+    delay: 1.0
+    fan_in: 25
+    type: inh
+    weight: 0.35
+  GPeTI->GPeTI:
+    delay: 1.0
+    fan_in: 25
+    type: inh
+    weight: 1.2
+  GPeTI->GPi:
+    delay: 4.5
+    fan_in: 30
+    type: inh
+    weight: 4.2
+  GPeTI->SNR:
+    delay: 3.0
+    fan_in: 30
+    type: inh
+    weight: 4.2
+  GPeTI->STN:
+    delay: 1.0
+    fan_in: 30
+    type: inh
+    weight: 0.08
+  STN->GPeTA:
+    delay: 2.0
+    fan_in: 25
+    type: exc
+    weight: 0.13
+  STN->GPeTI:
+    delay: 2.0
+    fan_in: 30
+    type: exc
+    weight: 0.42
+  STN->GPi:
+    delay: 6
+    fan_in: 10
+    type: exc
+    weight: 0.55
+  STN->SNR:
+    delay: 4.5
+    fan_in: 10
+    type: exc
+    weight: 0.55
+
+# Devices section: constant, oscillating or poissonian spike sources.
+# The only well tested for now are the spikesources: each neuron receives an independent train
+devices:
+  pop_D1_spikesource:           # !!! The format of the name is important for parsing !!!
+    rate: 850                   # this is in [Hz]
+    type: poisson_spike_source  
+    weight: 0.51                # same as for projections [nS]
+    weight_delta: 0.0           # same as for projections [%]
+  pop_D2_spikesource:
+    rate: 850
+    type: poisson_spike_source
+    weight: 0.448
+    weight_delta: 0.0
+  pop_FSN_spikesource:
+    rate: 820
+    type: poisson_spike_source
+    weight: 0.5
+    weight_delta: 0.0
+  pop_GPeTA_spikesource:
+    rate: 100
+    type: poisson_spike_source
+    weight: 0.15
+    weight_delta: 0.0
+  pop_GPeTI_spikesource:
+    rate: 800
+    type: poisson_spike_source
+    weight: 0.25
+    weight_delta: 0.0
+  pop_GPi_spikesource:
+    rate: 0
+    type: poisson_spike_source
+    weight: 0.35
+    weight_delta: 0.1
+  pop_SNR_spikesource:
+    rate: 0
+    type: poisson_spike_source
+    weight: 0.55
+    weight_delta: 0.0
+  pop_STN_spikesource:
+    rate: 450
+    type: poisson_spike_source
+    weight: 0.25
+    weight_delta: 0.0

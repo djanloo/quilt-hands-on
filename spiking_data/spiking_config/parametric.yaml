@@ -1,0 +1,106 @@
+# This file specifies the dependence of parameters from a (say) hyperparameter.
+# The hyperparameters DO NOT UNDERGO any dynamical evolution (fixed for each run)
+
+# the value of a parameter is linear in the hyperparameter, with the coefficient of proportionality being called 'susceptibility':
+#         par(hyper) = par_0 + susc * hyper
+
+# Declaration of the parameter range 
+parameters:
+  dd:
+    max: 1      # max value
+    min: -0.25  # min value
+    shift: 0    # center
+
+# Declaration of the coefficients
+parametric:
+  dd:
+  - attribute: weight           # The attribute that the parametrization affects
+    device: pop_D2_spikesource  # The object (device, population or projection) 
+    susceptibility: 0.073       # The coefficient (susceptibility)
+  - attribute: weight
+    device: pop_D1_spikesource
+    susceptibility: -0.104
+  - attribute: E_l
+    population: FSN
+    susceptibility: 0.0078
+  - attribute: E_l
+    population: GPeTA
+    susceptibility: 0.0181
+  - attribute: E_l
+    population: GPeTI
+    susceptibility: 0.0181
+  - attribute: V_peak
+    population: D1
+    susceptibility: -0.00296
+  - attribute: ada_b
+    population: D1
+    susceptibility: 0.045
+  - attribute: E_l
+    population: SNR
+    susceptibility: 0.00896
+  - attribute: weight
+    projection: FSN->FSN
+    susceptibility: 0.127
+  - attribute: weight
+    projection: GPeTA->FSN
+    susceptibility: 0.053
+  - attribute: weight
+    projection: GPeTI->FSN
+    susceptibility: 0.053
+  - attribute: weight
+    projection: GPeTA->GPeTA
+    susceptibility: 0.083
+  - attribute: weight
+    projection: GPeTA->GPeTI
+    susceptibility: 0.083
+  - attribute: weight
+    projection: GPeTI->GPeTI
+    susceptibility: 0.083
+  - attribute: weight
+    projection: GPeTI->GPeTA
+    susceptibility: 0.083
+  - attribute: weight
+    projection: D2->GPeTI
+    susceptibility: 0.083
+  - attribute: weight
+    projection: STN->GPeTA
+    susceptibility: 0.045
+  - attribute: weight
+    projection: STN->GPeTI
+    susceptibility: 0.045
+  - attribute: connectivity
+    projection: FSN->D2
+    susceptibility: 0.09
+  - attribute: connectivity
+    projection: D1->D1
+    susceptibility: -0.088
+  - attribute: connectivity
+    projection: D1->D2
+    susceptibility: -0.088
+  - attribute: connectivity
+    projection: D2->D1
+    susceptibility: -0.088
+  - attribute: connectivity
+    projection: D2->D2
+    susceptibility: -0.088
+  - attribute: weight
+    projection: D1->D1
+    susceptibility: -0.088
+  - attribute: weight
+    projection: D1->D2
+    susceptibility: -0.088
+  - attribute: weight
+    projection: D2->D1
+    susceptibility: -0.088
+  - attribute: weight
+    projection: D2->D2
+    susceptibility: -0.088
+  - attribute: weight
+    projection: GPeTA->D1
+    susceptibility: 0.1150
+  - attribute: weight
+    projection: D1->SNR
+    susceptibility: -0.056
+  - attribute: weight
+    projection: GPeTI->STN
+    susceptibility: 0.024
