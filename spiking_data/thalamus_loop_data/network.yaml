@@ -1,0 +1,546 @@
+# Thalamocortical network - Parkinson's Disease model
+# DC bias + unified poisson spike sources for noise
+
+populations:
+  # Cortical Layer S (Superficial)
+  S.RS:
+    neuron_model: RS.neuron
+    size: 50
+  
+  S.IB:
+    neuron_model: IB.neuron
+    size: 50
+  
+  # Cortical Layer M (Middle)
+  M.RS:
+    neuron_model: RS.neuron
+    size: 100
+  
+  # Cortical Layer D (Deep)
+  D.RS:
+    neuron_model: RS.neuron
+    size: 70
+  
+  D.IB:
+    neuron_model: IB.neuron
+    size: 30
+  
+  # Cortical Interneurons
+  INs.FS:
+    neuron_model: FS.neuron
+    size: 50
+  
+  INs.LTS:
+    neuron_model: LTS.neuron
+    size: 50
+  
+  # Thalamus - Relay
+  TCR:
+    neuron_model: TC.neuron
+    size: 100
+  
+  # Thalamus - Reticular
+  TRN:
+    neuron_model: RE.neuron
+    size: 40
+
+projections:
+  # ============================================
+  # RECURRENT CONNECTIONS (within same structure)
+  # ============================================
+  
+  S.RS->S.RS:
+    delay: 2.0
+    fan_in: 50
+    type: inh
+    weight: 10.0
+    weight_delta: 0.5
+  
+  S.RS->S.IB:
+    delay: 2.0
+    fan_in: 50
+    type: inh
+    weight: 10.0
+    weight_delta: 0.5
+  
+  S.IB->S.RS:
+    delay: 2.0
+    fan_in: 50
+    type: inh
+    weight: 10.0
+    weight_delta: 0.5
+  
+  S.IB->S.IB:
+    delay: 2.0
+    fan_in: 50
+    type: inh
+    weight: 10.0
+    weight_delta: 0.5
+  
+  M.RS->M.RS:
+    delay: 2.0
+    fan_in: 100
+    type: inh
+    weight: 10.0
+    weight_delta: 0.5
+  
+  D.RS->D.RS:
+    delay: 2.0
+    fan_in: 70
+    type: inh
+    weight: 10.0
+    weight_delta: 0.5
+  
+  D.RS->D.IB:
+    delay: 2.0
+    fan_in: 70
+    type: inh
+    weight: 10.0
+    weight_delta: 0.5
+  
+  D.IB->D.RS:
+    delay: 2.0
+    fan_in: 30
+    type: inh
+    weight: 10.0
+    weight_delta: 0.5
+  
+  D.IB->D.IB:
+    delay: 2.0
+    fan_in: 30
+    type: inh
+    weight: 10.0
+    weight_delta: 0.5
+  
+  INs.FS->INs.FS:
+    delay: 2.0
+    fan_in: 50
+    type: inh
+    weight: 10.0
+    weight_delta: 0.5
+  
+  INs.FS->INs.LTS:
+    delay: 2.0
+    fan_in: 50
+    type: inh
+    weight: 10.0
+    weight_delta: 0.5
+  
+  INs.LTS->INs.FS:
+    delay: 2.0
+    fan_in: 50
+    type: inh
+    weight: 10.0
+    weight_delta: 0.5
+  
+  INs.LTS->INs.LTS:
+    delay: 2.0
+    fan_in: 50
+    type: inh
+    weight: 10.0
+    weight_delta: 0.5
+  
+  TRN->TRN:
+    delay: 2.0
+    fan_in: 40
+    type: inh
+    weight: 10.0
+    weight_delta: 0.5
+
+  # ============================================
+  # CORTICAL INTER-LAYER CONNECTIONS
+  # ============================================
+  
+  # Layer M -> Layer S
+  M.RS->S.RS:
+    delay: 9.0
+    fan_in: 100
+    type: exc
+    weight: 60.0
+    weight_delta: 0.5
+  
+  M.RS->S.IB:
+    delay: 9.0
+    fan_in: 100
+    type: exc
+    weight: 60.0
+    weight_delta: 0.5
+  
+  # Layer D -> Layer S
+  D.RS->S.RS:
+    delay: 9.0
+    fan_in: 70
+    type: exc
+    weight: 100.0
+    weight_delta: 0.5
+  
+  D.RS->S.IB:
+    delay: 9.0
+    fan_in: 70
+    type: exc
+    weight: 100.0
+    weight_delta: 0.5
+  
+  D.IB->S.RS:
+    delay: 9.0
+    fan_in: 30
+    type: exc
+    weight: 100.0
+    weight_delta: 0.5
+  
+  D.IB->S.IB:
+    delay: 9.0
+    fan_in: 30
+    type: exc
+    weight: 100.0
+    weight_delta: 0.5
+  
+  # Layer S -> Layer M (weak feedback)
+  S.RS->M.RS:
+    delay: 9.0
+    fan_in: 50
+    type: exc
+    weight: 2.0
+    weight_delta: 0.5
+  
+  S.IB->M.RS:
+    delay: 9.0
+    fan_in: 50
+    type: exc
+    weight: 2.0
+    weight_delta: 0.5
+  
+  # Layer S -> Layer D
+  S.RS->D.RS:
+    delay: 9.0
+    fan_in: 50
+    type: exc
+    weight: 60.0
+    weight_delta: 0.5
+  
+  S.RS->D.IB:
+    delay: 9.0
+    fan_in: 50
+    type: exc
+    weight: 60.0
+    weight_delta: 0.5
+  
+  S.IB->D.RS:
+    delay: 9.0
+    fan_in: 50
+    type: exc
+    weight: 60.0
+    weight_delta: 0.5
+  
+  S.IB->D.IB:
+    delay: 9.0
+    fan_in: 50
+    type: exc
+    weight: 60.0
+    weight_delta: 0.5
+
+  # ============================================
+  # CORTICAL INHIBITORY CONNECTIONS
+  # ============================================
+  
+  # INs -> Layer S (strong local inhibition)
+  INs.FS->S.RS:
+    delay: 2.0
+    fan_in: 50
+    type: inh
+    weight: 150.0
+    weight_delta: 0.5
+  
+  INs.FS->S.IB:
+    delay: 2.0
+    fan_in: 50
+    type: inh
+    weight: 150.0
+    weight_delta: 0.5
+  
+  INs.LTS->S.RS:
+    delay: 2.0
+    fan_in: 50
+    type: inh
+    weight: 150.0
+    weight_delta: 0.5
+  
+  INs.LTS->S.IB:
+    delay: 2.0
+    fan_in: 50
+    type: inh
+    weight: 150.0
+    weight_delta: 0.5
+  
+  # INs -> Layer M
+  INs.FS->M.RS:
+    delay: 2.0
+    fan_in: 50
+    type: inh
+    weight: 150.0
+    weight_delta: 0.5
+  
+  INs.LTS->M.RS:
+    delay: 2.0
+    fan_in: 50
+    type: inh
+    weight: 150.0
+    weight_delta: 0.5
+  
+  # INs -> Layer D (VERY STRONG - key for beta oscillations)
+  INs.FS->D.RS:
+    delay: 2.0
+    fan_in: 50
+    type: inh
+    weight: 1000.0
+    weight_delta: 0.5
+  
+  INs.FS->D.IB:
+    delay: 2.0
+    fan_in: 50
+    type: inh
+    weight: 1000.0
+    weight_delta: 0.5
+  
+  INs.LTS->D.RS:
+    delay: 2.0
+    fan_in: 50
+    type: inh
+    weight: 1000.0
+    weight_delta: 0.5
+  
+  INs.LTS->D.IB:
+    delay: 2.0
+    fan_in: 50
+    type: inh
+    weight: 1000.0
+    weight_delta: 0.5
+  
+  # Cortex -> INs (recruitment)
+  S.RS->INs.FS:
+    delay: 2.0
+    fan_in: 50
+    type: exc
+    weight: 40.0
+    weight_delta: 0.5
+  
+  S.RS->INs.LTS:
+    delay: 2.0
+    fan_in: 50
+    type: exc
+    weight: 40.0
+    weight_delta: 0.5
+  
+  S.IB->INs.FS:
+    delay: 2.0
+    fan_in: 50
+    type: exc
+    weight: 40.0
+    weight_delta: 0.5
+  
+  S.IB->INs.LTS:
+    delay: 2.0
+    fan_in: 50
+    type: exc
+    weight: 40.0
+    weight_delta: 0.5
+  
+  M.RS->INs.FS:
+    delay: 2.0
+    fan_in: 100
+    type: exc
+    weight: 40.0
+    weight_delta: 0.5
+  
+  M.RS->INs.LTS:
+    delay: 2.0
+    fan_in: 100
+    type: exc
+    weight: 40.0
+    weight_delta: 0.5
+  
+  D.RS->INs.FS:
+    delay: 2.0
+    fan_in: 70
+    type: exc
+    weight: 40.0
+    weight_delta: 0.5
+  
+  D.RS->INs.LTS:
+    delay: 2.0
+    fan_in: 70
+    type: exc
+    weight: 40.0
+    weight_delta: 0.5
+  
+  D.IB->INs.FS:
+    delay: 2.0
+    fan_in: 30
+    type: exc
+    weight: 40.0
+    weight_delta: 0.5
+  
+  D.IB->INs.LTS:
+    delay: 2.0
+    fan_in: 30
+    type: exc
+    weight: 40.0
+    weight_delta: 0.5
+
+  # ============================================
+  # THALAMO-CORTICAL CONNECTIONS
+  # ============================================
+  
+  # TCR -> Cortex (main thalamic input to Layer D)
+  TCR->D.RS:
+    delay: 16.0
+    fan_in: 100
+    type: exc
+    weight: 200.0
+    weight_delta: 0.5
+  
+  TCR->D.IB:
+    delay: 16.0
+    fan_in: 100
+    type: exc
+    weight: 200.0
+    weight_delta: 0.5
+  
+  # TCR -> INs (strong thalamic recruitment)
+  TCR->INs.FS:
+    delay: 16.0
+    fan_in: 100
+    type: exc
+    weight: 200.0
+    weight_delta: 0.5
+  
+  TCR->INs.LTS:
+    delay: 16.0
+    fan_in: 100
+    type: exc
+    weight: 200.0
+    weight_delta: 0.5
+
+  # ============================================
+  # CORTICO-THALAMIC CONNECTIONS
+  # ============================================
+  
+  # Layer D -> TCR (cortical feedback)
+  D.RS->TCR:
+    delay: 21.0
+    fan_in: 70
+    type: exc
+    weight: 20.0
+    weight_delta: 0.5
+  
+  D.IB->TCR:
+    delay: 21.0
+    fan_in: 30
+    type: exc
+    weight: 20.0
+    weight_delta: 0.5
+  
+  # Layer D -> TRN (cortical collateral)
+  D.RS->TRN:
+    delay: 21.0
+    fan_in: 70
+    type: exc
+    weight: 20.0
+    weight_delta: 0.5
+  
+  D.IB->TRN:
+    delay: 21.0
+    fan_in: 30
+    type: exc
+    weight: 20.0
+    weight_delta: 0.5
+
+  # ============================================
+  # INTRA-THALAMIC CONNECTIONS
+  # ============================================
+  
+  # TCR -> TRN (thalamo-cortical collateral)
+  TCR->TRN:
+    delay: 9.0
+    fan_in: 100
+    type: exc
+    weight: 100.0
+    weight_delta: 0.5
+  
+  # TRN -> TCR (massive inhibition - KEY for oscillations)
+  TRN->TCR:
+    delay: 9.0
+    fan_in: 40
+    type: inh
+    weight: 500.0
+    weight_delta: 0.5
+# ============================================
+# DEVICES: POISSON SPIKE SOURCES
+# Unified: noise(σ=1.5) + poisson(20Hz, w=0.5)
+# ============================================
+devices:
+  # ==========================================
+  # CORTICAL EXCITATORY NEURONS
+  # ==========================================
+  
+  pop_S.RS_spikesource:
+    rate: 280
+    type: poisson_spike_source
+    weight: 0.55
+    weight_delta: 0.4
+  
+  pop_S.IB_spikesource:
+    rate: 280
+    type: poisson_spike_source
+    weight: 0.55
+    weight_delta: 0.4
+  
+  pop_M.RS_spikesource:
+    rate: 280
+    type: poisson_spike_source
+    weight: 0.55
+    weight_delta: 0.4
+  
+  pop_D.RS_spikesource:
+    rate: 280
+    type: poisson_spike_source
+    weight: 0.55
+    weight_delta: 0.4
+  
+  pop_D.IB_spikesource:
+    rate: 280
+    type: poisson_spike_source
+    weight: 0.55
+    weight_delta: 0.4
+  
+  # ==========================================
+  # CORTICAL INHIBITORY NEURONS
+  # ==========================================
+  
+  pop_INs.FS_spikesource:
+    rate: 280
+    type: poisson_spike_source
+    weight: 0.55
+    weight_delta: 0.4
+  
+  pop_INs.LTS_spikesource:
+    rate: 280
+    type: poisson_spike_source
+    weight: 0.55
+    weight_delta: 0.4
+  
+  # ==========================================
+  # THALAMIC NEURONS
+  # ==========================================
+  
+  pop_TCR_spikesource:
+    rate: 240
+    type: poisson_spike_source
+    weight: 0.5
+    weight_delta: 0.35
+  
+  pop_TRN_spikesource:
+    rate: 240
+    type: poisson_spike_source
+    weight: 0.5
+    weight_delta: 0.35

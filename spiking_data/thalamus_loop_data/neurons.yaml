@@ -1,0 +1,118 @@
+# Izhikevich neuron models for thalamocortical network
+# All parameters from NeuroParam base class + izhikevich_param
+
+# Regular Spiking (cortical excitatory)
+RS.neuron:
+  neuron_type: izhikevich
+  # Izhikevich-specific (from izhikevich_param)
+  a: 0.02
+  b: 0.2
+  d: 8
+  # Common parameters (from NeuroParam)
+  E_l: -65          # Rest potential [mV]
+  V_reset: -65      # Reset voltage after spike [mV] (= parameter c)
+  V_peak: 30        # Spike threshold [mV]
+  E_ex: 0           # Excitatory reversal [mV]
+  E_in: -80         # Inhibitory reversal [mV]
+  C_m: 100          # Membrane capacitance [pF] (not used but required)
+  tau_ex: 5         # Excitatory decay [ms]
+  tau_in: 10        # Inhibitory decay [ms]
+  tau_refrac: 2     # Refractory period [ms]
+  I_e: 3.6          # DC bias current [nA]
+  I_osc: 0.0        # No oscillatory input
+  omega_I: 0.0      # No oscillation
+
+# Intrinsically Bursting (cortical excitatory)
+IB.neuron:
+  neuron_type: izhikevich
+  a: 0.02
+  b: 0.2
+  d: 4
+  E_l: -65
+  V_reset: -55      # Higher reset enables bursting!
+  V_peak: 30
+  E_ex: 0
+  E_in: -80
+  C_m: 100
+  tau_ex: 5
+  tau_in: 10
+  tau_refrac: 2
+  I_e: 3.6
+  I_osc: 0.0
+  omega_I: 0.0
+
+# Fast Spiking (cortical inhibitory)
+FS.neuron:
+  neuron_type: izhikevich
+  a: 0.1            # Fast recovery
+  b: 0.2
+  d: 2
+  E_l: -65
+  V_reset: -65
+  V_peak: 30
+  E_ex: 0
+  E_in: -80
+  C_m: 80           # Smaller capacitance (not used but biologically correct)
+  tau_ex: 5
+  tau_in: 8         # Faster inhibitory decay
+  tau_refrac: 1     # Shorter refractory period
+  I_e: 3.9
+  I_osc: 0.0
+  omega_I: 0.0
+
+# Low-Threshold Spiking (cortical inhibitory)
+LTS.neuron:
+  neuron_type: izhikevich
+  a: 0.02
+  b: 0.25
+  d: 2
+  E_l: -65
+  V_reset: -65
+  V_peak: 30
+  E_ex: 0
+  E_in: -80
+  C_m: 100
+  tau_ex: 5
+  tau_in: 10
+  tau_refrac: 2
+  I_e: 3.9
+  I_osc: 0.0
+  omega_I: 0.0
+
+# Thalamo-Cortical Relay
+TC.neuron:
+  neuron_type: izhikevich
+  a: 0.02
+  b: 0.25
+  d: 0.05           # Very weak recovery (relay mode)
+  E_l: -65
+  V_reset: -65
+  V_peak: 30
+  E_ex: 0
+  E_in: -80
+  C_m: 200          # Larger for thalamic neurons
+  tau_ex: 3         # Faster synapses
+  tau_in: 8
+  tau_refrac: 2
+  I_e: 0.5          # Low bias (suprathreshold)
+  I_osc: 0.0
+  omega_I: 0.0
+
+# Thalamic Reticular
+RE.neuron:
+  neuron_type: izhikevich
+  a: 0.02
+  b: 0.25
+  d: 2.05
+  E_l: -65
+  V_reset: -65
+  V_peak: 30
+  E_ex: 0
+  E_in: -80
+  C_m: 200
+  tau_ex: 3
+  tau_in: 8
+  tau_refrac: 2
+  I_e: 0.7
+  I_osc: 0.0
+  omega_I: 0.0

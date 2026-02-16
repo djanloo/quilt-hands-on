@@ -1,0 +1,633 @@
+# Parametric modulation of thalamocortical network
+# Hyperparameter 'strength' controls global synaptic strength and variability
+# Formula: parameter(strength) = parameter_0 + susceptibility * strength
+
+# Declaration of the hyperparameter range
+parameters:
+  strength:
+    max: 1.0      
+    min: -1.0       
+    shift: 0    
+
+# Declaration of the parametric dependencies
+parametric:
+  strength:
+    # ============================================
+    # POISSON SPIKE SOURCES - WEIGHT
+    # ============================================
+    
+    # Cortical excitatory neurons
+    - attribute: weight
+      device: pop_S.RS_spikesource
+      susceptibility: 1.0
+    
+    - attribute: weight
+      device: pop_S.IB_spikesource
+      susceptibility: 1.0
+    
+    - attribute: weight
+      device: pop_M.RS_spikesource
+      susceptibility: 1.0
+    
+    - attribute: weight
+      device: pop_D.RS_spikesource
+      susceptibility: 1.0
+    
+    - attribute: weight
+      device: pop_D.IB_spikesource
+      susceptibility: 1.0
+    
+    # Cortical inhibitory neurons
+    - attribute: weight
+      device: pop_INs.FS_spikesource
+      susceptibility: 1.0
+    
+    - attribute: weight
+      device: pop_INs.LTS_spikesource
+      susceptibility: 1.0
+    
+    # Thalamic neurons
+    - attribute: weight
+      device: pop_TCR_spikesource
+      susceptibility: 1.0
+    
+    - attribute: weight
+      device: pop_TRN_spikesource
+      susceptibility: 1.0
+    
+    # ============================================
+    # POISSON SPIKE SOURCES - WEIGHT_DELTA
+    # ============================================
+    
+    # Cortical excitatory neurons
+    - attribute: weight_delta
+      device: pop_S.RS_spikesource
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      device: pop_S.IB_spikesource
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      device: pop_M.RS_spikesource
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      device: pop_D.RS_spikesource
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      device: pop_D.IB_spikesource
+      susceptibility: 1.0
+    
+    # Cortical inhibitory neurons
+    - attribute: weight_delta
+      device: pop_INs.FS_spikesource
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      device: pop_INs.LTS_spikesource
+      susceptibility: 1.0
+    
+    # Thalamic neurons
+    - attribute: weight_delta
+      device: pop_TCR_spikesource
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      device: pop_TRN_spikesource
+      susceptibility: 1.0
+    
+    # ============================================
+    # RECURRENT CONNECTIONS - WEIGHT
+    # ============================================
+    
+    # Layer S recurrent
+    - attribute: weight
+      projection: S.RS->S.RS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: S.RS->S.IB
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: S.IB->S.RS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: S.IB->S.IB
+      susceptibility: 1.0
+    
+    # Layer M recurrent
+    - attribute: weight
+      projection: M.RS->M.RS
+      susceptibility: 1.0
+    
+    # Layer D recurrent
+    - attribute: weight
+      projection: D.RS->D.RS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: D.RS->D.IB
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: D.IB->D.RS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: D.IB->D.IB
+      susceptibility: 1.0
+    
+    # INs recurrent
+    - attribute: weight
+      projection: INs.FS->INs.FS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: INs.FS->INs.LTS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: INs.LTS->INs.FS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: INs.LTS->INs.LTS
+      susceptibility: 1.0
+    
+    # TRN recurrent
+    - attribute: weight
+      projection: TRN->TRN
+      susceptibility: 1.0
+    
+    # ============================================
+    # RECURRENT CONNECTIONS - WEIGHT_DELTA
+    # ============================================
+    
+    # Layer S recurrent
+    - attribute: weight_delta
+      projection: S.RS->S.RS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: S.RS->S.IB
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: S.IB->S.RS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: S.IB->S.IB
+      susceptibility: 1.0
+    
+    # Layer M recurrent
+    - attribute: weight_delta
+      projection: M.RS->M.RS
+      susceptibility: 1.0
+    
+    # Layer D recurrent
+    - attribute: weight_delta
+      projection: D.RS->D.RS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: D.RS->D.IB
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: D.IB->D.RS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: D.IB->D.IB
+      susceptibility: 1.0
+    
+    # INs recurrent
+    - attribute: weight_delta
+      projection: INs.FS->INs.FS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: INs.FS->INs.LTS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: INs.LTS->INs.FS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: INs.LTS->INs.LTS
+      susceptibility: 1.0
+    
+    # TRN recurrent
+    - attribute: weight_delta
+      projection: TRN->TRN
+      susceptibility: 1.0
+    
+    # ============================================
+    # CORTICAL INTER-LAYER CONNECTIONS - WEIGHT
+    # ============================================
+    
+    # M -> S
+    - attribute: weight
+      projection: M.RS->S.RS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: M.RS->S.IB
+      susceptibility: 1.0
+    
+    # D -> S
+    - attribute: weight
+      projection: D.RS->S.RS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: D.RS->S.IB
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: D.IB->S.RS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: D.IB->S.IB
+      susceptibility: 1.0
+    
+    # S -> M
+    - attribute: weight
+      projection: S.RS->M.RS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: S.IB->M.RS
+      susceptibility: 1.0
+    
+    # S -> D
+    - attribute: weight
+      projection: S.RS->D.RS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: S.RS->D.IB
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: S.IB->D.RS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: S.IB->D.IB
+      susceptibility: 1.0
+    
+    # ============================================
+    # CORTICAL INTER-LAYER CONNECTIONS - WEIGHT_DELTA
+    # ============================================
+    
+    # M -> S
+    - attribute: weight_delta
+      projection: M.RS->S.RS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: M.RS->S.IB
+      susceptibility: 1.0
+    
+    # D -> S
+    - attribute: weight_delta
+      projection: D.RS->S.RS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: D.RS->S.IB
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: D.IB->S.RS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: D.IB->S.IB
+      susceptibility: 1.0
+    
+    # S -> M
+    - attribute: weight_delta
+      projection: S.RS->M.RS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: S.IB->M.RS
+      susceptibility: 1.0
+    
+    # S -> D
+    - attribute: weight_delta
+      projection: S.RS->D.RS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: S.RS->D.IB
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: S.IB->D.RS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: S.IB->D.IB
+      susceptibility: 1.0
+    
+    # ============================================
+    # CORTICAL INHIBITORY CONNECTIONS - WEIGHT
+    # ============================================
+    
+    # INs -> S
+    - attribute: weight
+      projection: INs.FS->S.RS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: INs.FS->S.IB
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: INs.LTS->S.RS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: INs.LTS->S.IB
+      susceptibility: 1.0
+    
+    # INs -> M
+    - attribute: weight
+      projection: INs.FS->M.RS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: INs.LTS->M.RS
+      susceptibility: 1.0
+    
+    # INs -> D (KEY connections for beta oscillations)
+    - attribute: weight
+      projection: INs.FS->D.RS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: INs.FS->D.IB
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: INs.LTS->D.RS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: INs.LTS->D.IB
+      susceptibility: 1.0
+    
+    # Cortex -> INs
+    - attribute: weight
+      projection: S.RS->INs.FS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: S.RS->INs.LTS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: S.IB->INs.FS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: S.IB->INs.LTS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: M.RS->INs.FS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: M.RS->INs.LTS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: D.RS->INs.FS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: D.RS->INs.LTS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: D.IB->INs.FS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: D.IB->INs.LTS
+      susceptibility: 1.0
+    
+    # ============================================
+    # CORTICAL INHIBITORY CONNECTIONS - WEIGHT_DELTA
+    # ============================================
+    
+    # INs -> S
+    - attribute: weight_delta
+      projection: INs.FS->S.RS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: INs.FS->S.IB
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: INs.LTS->S.RS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: INs.LTS->S.IB
+      susceptibility: 1.0
+    
+    # INs -> M
+    - attribute: weight_delta
+      projection: INs.FS->M.RS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: INs.LTS->M.RS
+      susceptibility: 1.0
+    
+    # INs -> D (KEY connections for beta oscillations)
+    - attribute: weight_delta
+      projection: INs.FS->D.RS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: INs.FS->D.IB
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: INs.LTS->D.RS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: INs.LTS->D.IB
+      susceptibility: 1.0
+    
+    # Cortex -> INs
+    - attribute: weight_delta
+      projection: S.RS->INs.FS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: S.RS->INs.LTS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: S.IB->INs.FS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: S.IB->INs.LTS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: M.RS->INs.FS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: M.RS->INs.LTS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: D.RS->INs.FS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: D.RS->INs.LTS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: D.IB->INs.FS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: D.IB->INs.LTS
+      susceptibility: 1.0
+    
+    # ============================================
+    # THALAMO-CORTICAL CONNECTIONS - WEIGHT
+    # ============================================
+    
+    # TCR -> D
+    - attribute: weight
+      projection: TCR->D.RS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: TCR->D.IB
+      susceptibility: 1.0
+    
+    # TCR -> INs
+    - attribute: weight
+      projection: TCR->INs.FS
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: TCR->INs.LTS
+      susceptibility: 1.0
+    
+    # ============================================
+    # THALAMO-CORTICAL CONNECTIONS - WEIGHT_DELTA
+    # ============================================
+    
+    # TCR -> D
+    - attribute: weight_delta
+      projection: TCR->D.RS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: TCR->D.IB
+      susceptibility: 1.0
+    
+    # TCR -> INs
+    - attribute: weight_delta
+      projection: TCR->INs.FS
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: TCR->INs.LTS
+      susceptibility: 1.0
+    
+    # ============================================
+    # CORTICO-THALAMIC CONNECTIONS - WEIGHT
+    # ============================================
+    
+    # D -> TCR
+    - attribute: weight
+      projection: D.RS->TCR
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: D.IB->TCR
+      susceptibility: 1.0
+    
+    # D -> TRN
+    - attribute: weight
+      projection: D.RS->TRN
+      susceptibility: 1.0
+    
+    - attribute: weight
+      projection: D.IB->TRN
+      susceptibility: 1.0
+    
+    # ============================================
+    # CORTICO-THALAMIC CONNECTIONS - WEIGHT_DELTA
+    # ============================================
+    
+    # D -> TCR
+    - attribute: weight_delta
+      projection: D.RS->TCR
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: D.IB->TCR
+      susceptibility: 1.0
+    
+    # D -> TRN
+    - attribute: weight_delta
+      projection: D.RS->TRN
+      susceptibility: 1.0
+    
+    - attribute: weight_delta
+      projection: D.IB->TRN
+      susceptibility: 1.0
+    
+    # ============================================
+    # INTRA-THALAMIC CONNECTIONS - WEIGHT
+    # ============================================
+    
+    # TCR -> TRN
+    - attribute: weight
+      projection: TCR->TRN
+      susceptibility: 1.0
+    
+    # TRN -> TCR (KEY for oscillations)
+    - attribute: weight
+      projection: TRN->TCR
+      susceptibility: 1.0
+    
+    # ============================================
+    # INTRA-THALAMIC CONNECTIONS - WEIGHT_DELTA
+    # ============================================
+    
+    # TCR -> TRN
+    - attribute: weight_delta
+      projection: TCR->TRN
+      susceptibility: 1.0
+    
+    # TRN -> TCR (KEY for oscillations)
+    - attribute: weight_delta
+      projection: TRN->TCR
+      susceptibility: 1.0
